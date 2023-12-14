@@ -1,0 +1,52 @@
+<main class="main">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Adicionar produto
+    </button>
+<ul class="list-group list-group-flush">
+    {{#each products}}
+    <li class="list-group-item">
+        <P>{{this.nome}} <span>Quantidae: {{this.quantidade}}</span></P>
+        <div class="actions">
+            <form action="/product/{{this.id}}" method="get">
+                <button type="submit" class="btn btn-info">Editar</button>
+            </form>
+    
+            <form action="/product/remove/">
+            <input type="hidden" name="id" value="{{this.id}}" />
+            <button type="submit" class="btn btn-info">Excluir</button>
+            </form>
+     </div>
+    </li>
+    {{/each}}
+</ul>
+</main>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+        <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Olá, minha nifetinha 😈😈🤐</h1>
+         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <form action="/product/add" method="post">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome produto</label>
+                <input type="text" name="nome" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="quantidade" class="form-label">Quatidade</label>
+                <input type="text" name="quantidade" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
